@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body class="admin-panel">
+
+    <div class="admin-panel__content">
+        <?php if(!empty($allUsers )) {?>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header">
+                    <h1>All Users</h1>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered table-content">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        foreach( $allUsers as $user)
+                                {
+                              $userid= $user['id'];
+                              $userName = $user['username'];
+                              $userEmail =$user['email'];
+
+                                    
+                               
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $userid ;?> </td>
+                            <td>
+                                <?php echo $userName ;?> </td>
+                            <td>
+                                <?php echo $userEmail ;?> </td>
+                            <td>
+                                <a href="updateUsers.php?id= <?php echo $userid ;?> " class="btn btn-success">Edit</a>
+                                <a href="deleteuser.php?id= <?php echo $userid ;?>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <?php      }; ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <?php  } else {?>
+
+        <div class="container">
+
+            <div class='nice-message'> There's No Record</div>
+
+
+
+        </div>
+
+
+
+        <?php } ?>
+    </div>
+
+
+</body>
+
+</html>
